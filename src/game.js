@@ -3,11 +3,13 @@ var config = {
     height: 480,
     width: 860,
     pixelArt: true,
-    scene: [Menuscene, Gamescene],
+    scene: [Menuscene, Gamescene, Endscene],
     physics: {
         default: 'arcade',
+        
         arcade: {
             debug: true,
+            setWorldBounds: true,
         }
     }
 }

@@ -15,6 +15,7 @@ class Gamescene extends Phaser.Scene
 
 //       P L A Y E R
         this.player = this.physics.add.sprite(this.centerX, this.centerY, 'player')
+            .setCollideWorldBounds(true, 0, 0, true)
             .setScale(.65)
             .setGravityY(700)
             .setMass(100)
@@ -41,17 +42,22 @@ class Gamescene extends Phaser.Scene
 //      F P S
         this.fps = this.add.text(50, 50, '', {color: '#000000'})
 
+//      B O U N D A R I E S
+        
 //      P H Y S I C S
         this.physicsgrp = [[this.pipe1, this.pipeF1], [this.pipe2, this.pipeF2], [this.pipe3, this.pipeF3]];
         for(const subgrp of this.physicsgrp)
         {
             this.physics.add.overlap(this.player, subgrp)
         }
+        
         this.physics.world.once('overlap', function()
         {
             this.scene.start(this.scene.key)
             
         }, this)
+
+        this.physics.world.on('worldbounds', function(){ this.scene.start('Endscene') }, this)
     }
 
     update(time, delta)
