@@ -4,10 +4,13 @@ var config = {
     width: 860,
     pixelArt: true,
     scene: [Menuscene, Gamescene, Endscene],
+    scale: {
+      mode: Phaser.Scale.ScaleModes.FIT,
+    },
     physics: {
         default: 'arcade',
         arcade: {
-            debug: true,
+            debug: false,
             setWorldBounds: true,
         }
     }
