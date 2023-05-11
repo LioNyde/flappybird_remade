@@ -16,7 +16,7 @@ class Gamescene extends Phaser.Scene
 //       P L A Y E R
         this.player = this.physics.add.sprite(this.centerX, this.centerY, 'player')
             .setCollideWorldBounds(true, 0, 0, true)
-            .setScale(.65)
+            .setScale(.5)
             .setGravityY(700)
             .setMass(100)
         ;
@@ -53,7 +53,7 @@ class Gamescene extends Phaser.Scene
         
         this.physics.world.once('overlap', function()
         {
-            this.scene.start(this.scene.key)
+            this.scene.start('Endscene')
             
         }, this)
 
@@ -79,14 +79,14 @@ class Gamescene extends Phaser.Scene
         this.player.angle = (this.player.body.velocity.y > 0) ? 15 : - 15
 
 //      SET WALLS VELOCITY
-        this.pipe1.setVelocityX(-10 * delta)
-        this.pipeF1.setVelocityX(-10 * delta)
-
-        this.pipe2.setVelocityX(-10 * delta)
-        this.pipeF2.setVelocityX(-10 * delta)
+        this.pipe1.setVelocityX(-15 * delta)
+        this.pipeF1.setVelocityX(-15 * delta)
         
-        this.pipe3.setVelocityX(-10 * delta)
-        this.pipeF3.setVelocityX(-10 * delta)
+        this.pipe2.setVelocityX(-15 * delta)
+        this.pipeF2.setVelocityX(-15 * delta)
+        
+        this.pipe3.setVelocityX(-15 * delta)
+        this.pipeF3.setVelocityX(-15 * delta)
 
 //      CHANGE WALL POSITION FOR REPETITION
         if(this.pipe1.x <= 0)
@@ -112,9 +112,3 @@ class Gamescene extends Phaser.Scene
         }
     }
 }
-/*
---NEW
--changes in player sprite
--changes in title scene
--randomY pos for obstacles
-*/
