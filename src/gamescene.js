@@ -110,11 +110,3 @@ class Gamescene extends Phaser.Scene
         }
     }
 }
-/*
---NEW
--changes in player sprite
--changes in title scene
--randomY pos for obstacles
--added endscene
--world bounds
-*/
