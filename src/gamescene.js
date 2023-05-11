@@ -27,13 +27,13 @@ class Gamescene extends Phaser.Scene
         }, this);
 
 //      O B S T A C L E
-        this.pipe1 = new Pipes(this, game.scale.width,  480, 'pipes')
+        this.pipe1 = new Pipes(this, game.scale.width,  Phaser.Math.Between(350, 480), 'pipes')
         this.pipeF1 = new PipesF(this, this.pipe1.x, this.pipe1.y - 410, 'pipes')
 
-        this.pipe2 = new Pipes(this, game.scale.width + 430, 350, 'pipes')
+        this.pipe2 = new Pipes(this, game.scale.width + 430, Phaser.Math.Between(350, 480), 'pipes')
         this.pipeF2 = new PipesF(this, this.pipe2.x, this.pipe2.y - 410, 'pipes')
 
-        this.pipe3 = new Pipes(this, this.pipe2.x + 430, game.scale.height - 20, 'pipes')
+        this.pipe3 = new Pipes(this, this.pipe2.x + 430, Phaser.Math.Between(350, 480), 'pipes')
         this.pipeF3 = new PipesF(this, this.pipe3.x, this.pipe3.y - 410, 'pipes')
 
 //      F L O O R
@@ -79,31 +79,31 @@ class Gamescene extends Phaser.Scene
         this.player.angle = (this.player.body.velocity.y > 0) ? 15 : - 15
 
 //      SET WALLS VELOCITY
-        this.pipe1.setVelocityX(-15 * delta)
-        this.pipeF1.setVelocityX(-15 * delta)
+        this.pipe1.setVelocityX(-5 * delta)
+        this.pipeF1.setVelocityX(-5 * delta)
         
-        this.pipe2.setVelocityX(-15 * delta)
-        this.pipeF2.setVelocityX(-15 * delta)
+        this.pipe2.setVelocityX(-5 * delta)
+        this.pipeF2.setVelocityX(-5 * delta)
         
-        this.pipe3.setVelocityX(-15 * delta)
-        this.pipeF3.setVelocityX(-15 * delta)
+        this.pipe3.setVelocityX(-5 * delta)
+        this.pipeF3.setVelocityX(-5 * delta)
 
 //      CHANGE WALL POSITION FOR REPETITION
-        if(this.pipe1.x <= 0)
+        if(this.pipe1.x <= -50)
         {
             this.pipe1.x = this.pipe3.x + 430
             this.pipeF1.x = this.pipe1.x
             this.pipe1.y = randomY
             this.pipeF1.y = randomY - 430
         }
-        if(this.pipe2.x <= 0)
+        if(this.pipe2.x <= -50)
         {
             this.pipe2.x = this.pipe1.x + 430
             this.pipeF2.x = this.pipe2.x
             this.pipe2.y = randomY
             this.pipeF2.y = randomY - 430
         }
-        if(this.pipe3.x <= 0)
+        if(this.pipe3.x <= -50)
         {
             this.pipe3.x = this.pipe2.x + 430
             this.pipeF3.x = this.pipe3.x
