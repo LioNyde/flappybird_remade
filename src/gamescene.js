@@ -28,13 +28,13 @@ class Gamescene extends Phaser.Scene
 
 //      O B S T A C L E
         this.pipe1 = new Pipes(this, game.scale.width,  480, 'pipes')
-        this.pipeF1 = new PipesF(this, this.pipe1.x, this.pipe1.y - 410, 'pipes')
+        this.pipeF1 = new PipesF(this, this.pipe1.x, this.pipe1.y - 415, 'pipes')
 
         this.pipe2 = new Pipes(this, game.scale.width + 430, 350, 'pipes')
-        this.pipeF2 = new PipesF(this, this.pipe2.x, this.pipe2.y - 410, 'pipes')
+        this.pipeF2 = new PipesF(this, this.pipe2.x, this.pipe2.y - 415, 'pipes')
 
         this.pipe3 = new Pipes(this, this.pipe2.x + 430, game.scale.height - 20, 'pipes')
-        this.pipeF3 = new PipesF(this, this.pipe3.x, this.pipe3.y - 410, 'pipes')
+        this.pipeF3 = new PipesF(this, this.pipe3.x, this.pipe3.y - 415, 'pipes')
 
 //      F L O O R
         this.floor = this.add.tileSprite(this.centerX, game.scale.height - 32, 860, 64, 'floor')
@@ -42,8 +42,6 @@ class Gamescene extends Phaser.Scene
 //      F P S
         this.fps = this.add.text(50, 50, '', {color: '#000000'})
 
-//      B O U N D A R I E S
-        
 //      P H Y S I C S
         this.physicsgrp = [[this.pipe1, this.pipeF1], [this.pipe2, this.pipeF2], [this.pipe3, this.pipeF3]];
         for(const subgrp of this.physicsgrp)
@@ -53,7 +51,7 @@ class Gamescene extends Phaser.Scene
         
         this.physics.world.once('overlap', function()
         {
-            this.scene.start(this.scene.key)
+            this.scene.start('Endscene')
             
         }, this)
 
@@ -86,21 +84,21 @@ class Gamescene extends Phaser.Scene
             this.pipe1.x = this.pipe3.x + 430
             this.pipeF1.x = this.pipe1.x
             this.pipe1.y = randomY
-            this.pipeF1.y = randomY - 430
+            this.pipeF1.y = randomY - 415
         }
         if(this.pipe2.x <= 0)
         {
             this.pipe2.x = this.pipe1.x + 430
             this.pipeF2.x = this.pipe2.x
             this.pipe2.y = randomY
-            this.pipeF2.y = randomY - 430
+            this.pipeF2.y = randomY - 415
         }
         if(this.pipe3.x <= 0)
         {
             this.pipe3.x = this.pipe2.x + 430
             this.pipeF3.x = this.pipe3.x
             this.pipe3.y = randomY
-            this.pipeF3.y = randomY - 430
+            this.pipeF3.y = randomY - 415
         }
     }
 }
@@ -109,4 +107,6 @@ class Gamescene extends Phaser.Scene
 -changes in player sprite
 -changes in title scene
 -randomY pos for obstacles
+-added endscene
+-world bounds
 */

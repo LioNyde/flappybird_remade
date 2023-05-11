@@ -6,7 +6,6 @@ var config = {
     scene: [Menuscene, Gamescene, Endscene],
     physics: {
         default: 'arcade',
-        
         arcade: {
             debug: true,
             setWorldBounds: true,
