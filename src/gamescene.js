@@ -58,6 +58,14 @@ class Gamescene extends Phaser.Scene
         }, this)
 
         this.physics.world.on('worldbounds', function(){ this.scene.start('Endscene') }, this)
+        
+  //    UI
+      this.ui = this.add.sprite(this.centerX, this.centerY, 'sensor')
+        .setInteractive({useHandCursor: true})
+        .on('pointerdown', function() 
+        {
+           this.player.setVelocityY(-280)
+        }, this)
     }
 
     update(time, delta)

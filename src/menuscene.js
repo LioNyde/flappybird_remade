@@ -14,7 +14,7 @@ class Menuscene extends Phaser.Scene
         this.load.image('floor', 'assets/floor.png')
         this.load.image('pipes', 'assets/pipes.png')
         this.load.image('player', 'assets/player.png')
-        this.load.image('sensor', 'assets/sensor.png')
+        this.load.image('sensor', 'assets/0292.png')
         this.load.image('title', 'assets/titlecard.png')
         this.load.image('end', 'assets/endcard.png')
     }
